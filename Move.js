@@ -4,8 +4,8 @@ class Move {
         this.beats = beats
     }
 
-    static getMove(moveName) {
-        if (!this.isValidPlay(moveName)) {
+    static GetMove(moveName) {
+        if (!this.IsValidPlay(moveName)) {
             return null
         }
 
@@ -22,7 +22,13 @@ class Move {
         }
     }
 
-    static isValidPlay(move) {
+    static GetRandomMove() {
+        let moves = ["rock", "paper", "scissors"]
+        let num = Math.floor(Math.random() * 3)
+        return this.GetMove(moves[num])
+    }
+
+    static IsValidPlay(move) {
         if (!move)
             return false
         move = move.toLowerCase()
@@ -30,25 +36,29 @@ class Move {
     }
 
     beatsMove(moveToBeat) {
-        return this.beatsMove === moveToBeat
+        if (this.beats === moveToBeat.name) {
+            return "win"
+        } else if (this.name === moveToBeat.name) {
+            return "draw"
+        } else return "lose"
     }
 }
 
 class Rock extends Move {
     constructor() {
-        super("Rock", "sciccors")
+        super("Rock", "Sciccors")
     }
 }
 
 class Paper extends Move {
     constructor() {
-        super("Paper", "rock")
+        super("Paper", "Rock")
     }
 }
 
 class Sciccors extends Move {
     constructor() {
-        super("Sciccors", "paper")
+        super("Sciccors", "Paper")
     }
 }
 
