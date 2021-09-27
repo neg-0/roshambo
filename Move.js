@@ -5,10 +5,6 @@ class Move {
     }
 
     static GetMove(moveName) {
-        if (!this.IsValidPlay(moveName)) {
-            return null
-        }
-
         switch (moveName.toLowerCase()) {
             case "rock": {
                 return new Rock();
@@ -20,19 +16,14 @@ class Move {
                 return new Sciccors();
             }
         }
+
+        return null
     }
 
     static GetRandomMove() {
         let moves = ["rock", "paper", "scissors"]
         let num = Math.floor(Math.random() * 3)
         return this.GetMove(moves[num])
-    }
-
-    static IsValidPlay(move) {
-        if (!move)
-            return false
-        move = move.toLowerCase()
-        return (move === "rock" || move === "paper" || move === "scissors")
     }
 
     beatsMove(moveToBeat) {
